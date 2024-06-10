@@ -1,8 +1,7 @@
 package com.app.google.striverA2ZDSASheet.basics.math;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class Divisors {
 
@@ -33,21 +32,19 @@ public class Divisors {
 
     private static void optimal(int n) {
 
-        Set<Integer> nums = new HashSet<>();
+        Set<Integer> divisors = new TreeSet<>();
 
-        for (int i = 1; i < (int) Math.sqrt(n); i++) {
+        for (int i = 1; i <= (int) Math.sqrt(n); i++) {
 
             if (n % i == 0) {
-                nums.add(i);
 
-                if (i != n / i) {
-//                    System.out.print(n/i + " ");
-                    nums.add(n / i);
-                }
+                divisors.add(i);
+                divisors.add(n / i);
+
             }
 
         }
 
-        System.out.println(Arrays.toString(nums.stream().sorted().toArray()));
+        System.out.println(divisors);
     }
 }

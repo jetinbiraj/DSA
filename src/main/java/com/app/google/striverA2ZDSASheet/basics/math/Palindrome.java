@@ -12,20 +12,20 @@ public class Palindrome {
 
     private static void isPalindrome(int num) {
 
-        int temp = num;
+        int tempNum = num;
 
-        int rev = 0;
+        int revNum = 0;
 
-        while (temp != 0) {
+        while (tempNum > 0) {
 
-            int div = temp % 10;
+            int div = tempNum % 10;
 
-            rev = rev * 10 + div;
+            revNum = revNum * 10 + div;
 
-            temp /= 10;
+            tempNum /= 10;
         }
 
-        if (num == rev){
+        if (num == revNum){
             System.out.println("Palindrome!!!");
         } else {
             System.out.println("Not Palindrome!!!");

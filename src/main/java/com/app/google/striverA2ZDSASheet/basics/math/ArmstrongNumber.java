@@ -5,25 +5,23 @@ public class ArmstrongNumber {
     public static void main(String[] args) {
 
 
-        int an = 371;
+        int an = 3713;
+        int resultNum = 0;
+        int tempNum = an;
 
-        int result = 0;
+        while (tempNum > 0) {
 
-        int temp = an;
+            int div = tempNum % 10;
 
-        while (temp != 0) {
+            resultNum += (div * div * div);
 
-            int div = temp % 10;
-
-            result += (div * div * div);
-
-            temp /= 10;
+            tempNum /= 10;
         }
 
-        if (result == an) {
+        if (resultNum == an) {
             System.out.println("It's an armstrong number!");
         } else {
-            System.out.println("It's an armstrong number!");
+            System.out.println("It's not an armstrong number!");
 
         }
     }

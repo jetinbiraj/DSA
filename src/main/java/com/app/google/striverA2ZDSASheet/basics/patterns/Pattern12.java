@@ -31,7 +31,7 @@ public class Pattern12 {
 }
 
 /* Output
- 1          1
+1          1
 12        21
 123      321
 1234    4321

@@ -7,7 +7,7 @@ public class BubbleSort {
     public static void main(String[] args) {
 
 //        int[] arr = {13, 46, 24, 52, 20, 9, 9, 9 , 9 };
-        int[] arr = {1, 46, 241, 5211, 20111 };
+        int[] arr = {1, 46, 241, 5211, 20111};
 
         for (int i = 0; i < arr.length; i++) {
 
@@ -27,7 +27,7 @@ public class BubbleSort {
 
             }
 
-            if(!swapped) {
+            if (!swapped) {
                 break;
             }
 

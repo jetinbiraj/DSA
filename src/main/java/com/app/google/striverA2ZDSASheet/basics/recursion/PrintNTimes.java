@@ -4,19 +4,19 @@ public class PrintNTimes {
 
     public static void main(String[] args) {
 
-        print(1, 11);
+        printNTimes(1, 11);
 
     }
 
-    private static void print(int current, int target) {
+    private static void printNTimes(int current, int target) {
 
-        System.out.println("AyeBiraj!!! " + current);
+        System.out.println("Aye Biraj!!! " + current);
 
         if (current >= target) {
             return;
         }
 
-        print(current + 1, target);
+        printNTimes(current + 1, target);
 
     }
 }

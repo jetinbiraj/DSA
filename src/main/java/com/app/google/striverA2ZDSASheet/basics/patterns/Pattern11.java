@@ -11,7 +11,7 @@ public class Pattern11 {
 
     private static void pattern11(int n) {
 
-        int printer = 1;
+        int printer;
 
         for (int i = 1; i <= n; i++) {
 
@@ -36,13 +36,15 @@ public class Pattern11 {
 }
 
 /* Output
- *
- **
- ***
- ****
- *****
- ****
- ***
- **
- *
+1
+01
+101
+0101
+10101
+010101
+1010101
+01010101
+101010101
+0101010101
+10101010101
  */

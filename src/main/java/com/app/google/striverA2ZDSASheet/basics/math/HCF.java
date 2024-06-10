@@ -20,7 +20,7 @@ public class HCF {
 
     private static int gcd(int num1, int num2) {
 
-        List<String> list = new ArrayList<>();
+        // Euclidean Algorithm
 
         while (num1 > 0 && num2 > 0) {
 
@@ -44,15 +44,15 @@ public class HCF {
 
         int minNum = Math.min(num1, num2);
 
-        int gcd = 0;
+        int hcf = 1;
 
         for (int i = 1; i <= minNum; i++) {
             if (num1 % i == 0 && num2 % i == 0) {
-                gcd = i;
+                hcf = i;
             }
 
         }
 
-        return gcd;
+        return hcf;
     }
 }

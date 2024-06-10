@@ -4,12 +4,24 @@ public class PrintNToOne {
 
     public static void main(String[] args) {
 
-        print(12);
+        printNToOne(12);
+        System.out.println("-----------------------------------------");
+        printNToOneBackTracking(1, 12);
+    }
+
+    private static void printNToOneBackTracking(int current, int target) {
+
+        if (current > target) {
+            return;
+        }
+
+        printNToOneBackTracking(current + 1, target);
+
+        System.out.println(current);
 
     }
 
-
-    private static void print(int target) {
+    private static void printNToOne(int target) {
 
         System.out.println(target);
 
@@ -19,7 +31,7 @@ public class PrintNToOne {
 
         }
 
-        print(target - 1);
+        printNToOne(target - 1);
 
     }
 }

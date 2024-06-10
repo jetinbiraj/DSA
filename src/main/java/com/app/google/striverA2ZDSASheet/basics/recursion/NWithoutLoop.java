@@ -13,27 +13,26 @@ public class NWithoutLoop {
     }
 
 
-
     public static int[] printNos(int x) {
 
         int[] arr = new int[x];
 
         addNumbers(arr, x, 1);
 
-            return arr;
+        return arr;
     }
 
-    private static void addNumbers(int[] arr, int target, int current){
+    private static void addNumbers(int[] arr, int target, int current) {
 
-        arr[current-1] = current;
+        arr[current - 1] = current;
 
-        if(current >= target){
+        if (current >= target) {
 
             return;
 
         }
 
-        addNumbers(arr, target, current+1);
+        addNumbers(arr, target, current + 1);
 
     }
 }

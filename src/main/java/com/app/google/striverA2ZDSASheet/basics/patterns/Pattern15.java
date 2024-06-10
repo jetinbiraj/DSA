@@ -11,8 +11,6 @@ public class Pattern15 {
 
     private static void pattern15(int n) {
 
-        char printer = 'A';
-
         for (int i = n; i > 0; i--) {
 
             for (char j = 'A'; j < 'A' + i; j++) {

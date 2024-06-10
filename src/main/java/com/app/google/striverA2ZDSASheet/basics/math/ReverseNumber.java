@@ -4,27 +4,25 @@ public class ReverseNumber {
 
     public static void main(String[] args) {
 
-//        System.out.println(reverse(1234567));
+        System.out.println(reverse(1234567));
 
-        int i = 00000;
-
-        System.out.println(i);
+//        int i = 00000;
+//
+//        System.out.println(i);
     }
 
     private static int reverse(int n) {
 
-        int resultNum = 0;
+        int reverseNum = 0;
 
-//       resultNum = Integer.MAX_VALUE +5;
-
-        while (n != 0) {
+        while (n > 0) {
 
             int div = n % 10;
             n = n / 10;
 
-            resultNum = resultNum * 10 + div;
+            reverseNum = reverseNum * 10 + div;
         }
 
-        return resultNum;
+        return reverseNum;
     }
 }

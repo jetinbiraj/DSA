@@ -4,17 +4,17 @@ public class SumNaturalNumbers {
 
 
     public static void main(String[] args) {
-        System.out.println(sum(100));
+        System.out.println(sumOfNumNaturalNumbers(100));
     }
 
 
-    private static int sum(int num) {
+    private static int sumOfNumNaturalNumbers(int num) {
 
-        if (num <= 1) {
-            return 1;
+        if (num < 1) {
+            return 0;
         }
 
-        return num + sum(num - 1);
+        return num + sumOfNumNaturalNumbers(num - 1);
 
     }
 
