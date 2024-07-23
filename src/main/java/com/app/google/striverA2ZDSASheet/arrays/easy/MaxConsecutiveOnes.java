@@ -6,24 +6,19 @@ public class MaxConsecutiveOnes {
 
         int[] arr = {1, 1, 0, 1, 1, 1};
 
-        System.out.println(maxConsecutive(arr));
-
+        System.out.println(maxConsecutiveOnes(arr));
     }
 
-    private static int maxConsecutive(int[] arr) {
+    private static int maxConsecutiveOnes(int[] arr) {
 
         int maxCount = 0;
         int count = 0;
 
         for (int num : arr) {
-
-            count = num == 1 ? count+1: 0;
-
+            count = num == 1 ? count + 1 : 0;
             maxCount = Math.max(count, maxCount);
-
         }
 
         return maxCount;
-
     }
 }

@@ -1,7 +1,6 @@
 package com.app.google.striverA2ZDSASheet.arrays.easy;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 public class RotateByK {
 
@@ -9,51 +8,20 @@ public class RotateByK {
 
         int[] arr = {1, 2, 3, 4, 5, 6, 7};
 
-//        rotateRight(arr, 2);
-//
-//        System.out.println(Arrays.toString(arr));
-//
-//        rotateLeft(arr, 2);
-//        System.out.println(Arrays.toString(arr));
+        int k = 3;
 
-        int k = 1;
+        System.out.println("After left rotation by: " + k);
+//        bruteForceRotateLeft(arr, k);
+        optimalRotateLeft(arr, k);
+        System.out.println(Arrays.toString(arr)); // [4, 5, 6, 7, 1, 2, 3]
 
-//        System.out.println("After left rotation by: " + k);
-//        rotateLeft(arr, k);
-//        System.out.println(Arrays.toString(arr));
-
-//        System.out.println("After right rotation by: " + k);
-//        rotateRight(arr, 2);
-//        System.out.println(Arrays.toString(arr));
-
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-
-        k = k % list.size();
-
-        reverse(list, 0, k - 1);
-        reverse(list, k, list.size() - 1);
-        reverse(list, 0, list.size() - 1);
-
-        System.out.println(list);
+        System.out.println("After right rotation by: " + k);
+//        bruteForceRotateRight(arr, k);
+        optimalRotateRight(arr, k);
+        System.out.println(Arrays.toString(arr)); // [1, 2, 3, 4, 5, 6, 7]
     }
 
-    private static void reverse(List<Integer> arr, int start, int end) {
-
-
-        while (start < end) {
-            int temp = arr.get(start);
-            arr.set(start, arr.get(end));
-            arr.set(end, temp);
-
-            start++;
-            end--;
-        }
-
-    }
-
-    private static void rotateRight(int[] arr, int k) {
+    private static void optimalRotateRight(int[] arr, int k) {
 
         k = k % arr.length;
 
@@ -62,7 +30,7 @@ public class RotateByK {
         reverse(arr, 0, arr.length - 1);
     }
 
-    private static void rotateLeft(int[] arr, int k) {
+    private static void optimalRotateLeft(int[] arr, int k) {
 
         k = k % arr.length;
 
@@ -72,85 +40,54 @@ public class RotateByK {
 
     }
 
-    private static void reverse(int[] arr, int start, int end) {
+    private static void reverse(int[] arr, int startIndex, int endIndex) {
 
-        if (start > end) {
-            return;
-        }
+        while (startIndex < endIndex) {
+            int temp = arr[startIndex];
+            arr[startIndex] = arr[endIndex];
+            arr[endIndex] = temp;
 
-        while (start < end) {
-            int temp = arr[start];
-            arr[start] = arr[end];
-            arr[end] = temp;
-
-            start++;
-            end--;
+            startIndex++;
+            endIndex--;
 
         }
-
     }
 
+    private static void bruteForceRotateRight(int[] arr, int k) {
 
-//    private static void rotateRight(int[] arr, int k) {
-//
-//        if (arr.length == 0) {
-//            return;
-//        }
-//
-//        k = k % arr.length;
-//
-//        if (k > arr.length) {
-//            return;
-//        }
-//
-//        int[] newArr = new int[k];
-//
-//        for (int i = 0; i < k; i++) {
-//
-//            newArr[i] = arr[arr.length - k + i];
-//        }
-//
-//        for (int i = 0; i < arr.length - k; i++) {
-//            arr[k + i] = arr[i];
-//        }
-//
-//        for (int i = 0; i < newArr.length; i++) {
-//            arr[i] = newArr[i];
-//        }
-//
-//        System.arraycopy(newArr, 0, arr, 0, newArr.length);
-//
-//    }
+        k = k % arr.length;
 
-//    private static void rotateLeft(int[] arr, int k) {
-//
-//        if (arr.length == 0) {
-//            return;
-//        }
-//
-//        k = k % arr.length;
-//
-//        if (k > arr.length) {
-//            return;
-//        }
-//
-//        int[] temp = new int[k];
-//
-////        int[] arr = {1, 2, 3, 4, 5, 6, 7}; k=2;
-//
-//        for (int i = 0; i < k; i++) {
-//            temp[i] = arr[i];
-//        }
-//
-//        for (int i = 0; i < arr.length - k; i++) {
-//            arr[i] = arr[k + i];
-//        }
-//
-//        for (int i = 0; i < k; i++) {
-//            arr[arr.length - k + i] = temp[i];
-//        }
-//
-////        System.arraycopy(temp, 0, arr, arr.length - k, k);
-//
-//    }
+        int[] tempArray = new int[k];
+
+        for (int i = 0; i < tempArray.length; i++) {
+            tempArray[i] = arr[arr.length - k + i];
+        }
+
+        for (int i = arr.length - k - 1; i >= 0; i--) {
+            arr[i + k] = arr[i];
+        }
+
+        for (int i = 0; i < tempArray.length; i++) {
+            arr[i] = tempArray[i];
+        }
+    }
+
+    private static void bruteForceRotateLeft(int[] arr, int k) {
+
+        k = k % arr.length;
+
+        int[] temp = new int[k];
+
+        for (int i = 0; i < k; i++) {
+            temp[i] = arr[i];
+        }
+
+        for (int i = 0; i < arr.length - k; i++) {
+            arr[i] = arr[k + i];
+        }
+
+        for (int i = 0; i < k; i++) {
+            arr[arr.length - k + i] = temp[i];
+        }
+    }
 }

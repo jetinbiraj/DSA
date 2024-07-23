@@ -1,4 +1,4 @@
-package com.app.google.striverA2ZDSASheet.string.basic;
+package com.app.google.striverA2ZDSASheet.string.medium;
 
 import java.util.ArrayList;
 import java.util.List;

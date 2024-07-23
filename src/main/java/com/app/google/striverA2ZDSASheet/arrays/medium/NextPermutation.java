@@ -9,15 +9,13 @@ public class NextPermutation {
 
         int[] arr = {2, 1, 5, 4, 3, 0, 0};
 
-        //ans {2,3,0,0,1,4,5}
         optimalNextGreaterPermutation(arr);
 
         System.out.println(Arrays.toString(arr));
 
-        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(2,1,5,4,3,0,0));
+        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(2, 1, 5, 4, 3, 0, 0));
 
         System.out.println(nextPermutation(list));
-
     }
 
     private static void optimalNextGreaterPermutation(int[] arr) {
@@ -34,42 +32,33 @@ public class NextPermutation {
 
         if (index == -1) {
 
-            int start = 0;
-            int end = arr.length - 1;
+            rotateArray(arr, 0, arr.length - 1);
+        } else {
 
-            while (start < end) {
-                int temp = arr[start];
-                arr[start++] = arr[end];
-                arr[end--] = temp;
-            }
-            return;
+            int nextSmallElementIndex = -1;
 
-        }
+            for (int i = arr.length - 1; i > index; i--) {
 
-        int nextSmallIndex = -1;
-
-        for (int i = arr.length - 1; i > index; i--) {
-
-            if (arr[i] > arr[index]) {
-                nextSmallIndex = i;
-                break;
+                if (arr[i] > arr[index]) {
+                    nextSmallElementIndex = i;
+                    break;
+                }
             }
 
+            int tempSwappingVariable = arr[nextSmallElementIndex];
+            arr[nextSmallElementIndex] = arr[index];
+            arr[index] = tempSwappingVariable;
+
+            rotateArray(arr, index + 1, arr.length - 1);
         }
+    }
 
-        int temp = arr[nextSmallIndex];
-        arr[nextSmallIndex] = arr[index];
-        arr[index] = temp;
-
-        int start = index + 1;
-        int end = arr.length - 1;
-
-        while (start < end) {
-            temp = arr[start];
-            arr[start++] = arr[end];
-            arr[end--] = temp;
+    private static void rotateArray(int[] arr, int startIndex, int endIndex) {
+        while (startIndex < endIndex) {
+            int tempSwappingVariable = arr[startIndex];
+            arr[startIndex++] = arr[endIndex];
+            arr[endIndex--] = tempSwappingVariable;
         }
-
     }
 
     public static ArrayList<Integer> nextPermutation(ArrayList<Integer> permutation) {
@@ -84,7 +73,6 @@ public class NextPermutation {
                 index = i - 1;
                 break;
             }
-
         }
 
         if (index == -1) {
@@ -98,17 +86,17 @@ public class NextPermutation {
             return res;
         } else {
 
-            int nextSmallIndex = -1;
+            int nextSmallElementIndex = -1;
 
             for (int i = permutation.size() - 1; i > index; i--) {
                 if (permutation.get(i) > permutation.get(index)) {
-                    nextSmallIndex = i;
+                    nextSmallElementIndex = i;
                     break;
                 }
             }
 
-            int temp = permutation.get(nextSmallIndex);
-            permutation.set(nextSmallIndex, permutation.get(index));
+            int temp = permutation.get(nextSmallElementIndex);
+            permutation.set(nextSmallElementIndex, permutation.get(index));
             permutation.set(index, temp);
 
             for (int i = 0; i <= index; i++) {

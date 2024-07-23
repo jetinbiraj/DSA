@@ -6,13 +6,15 @@ public class CountSubArrayWithSumEqualsK {
 
     public static void main(String[] args) {
 
+//        int[] arr = {1, 1, 1};
+//        int[] arr = {3, 1, 2, 4, 1, 1, 1, 1, 1, 1};
+//        int[] arr = {1, 2, 3, -3, 1, 1, 1, 4, 2, -3};
+        int[] arr = {3, -3, 1, 1, 1};
 
-        int[] arr = {1, 1, 1};
+        int sum = 3;
 
-        int sum = 2;
-
-
-//        System.out.println(bruteFindAllSubArraysWithGivenSum(arr, sum));
+        System.out.println(bruteFindAllSubArraysWithGivenSum(arr, sum));
+        System.out.println(betterFindAllSubArrayWithGivenSum(arr, sum));
         System.out.println(optimalFindAllSubArraysWithGivenSum(arr, sum));
     }
 
@@ -21,6 +23,7 @@ public class CountSubArrayWithSumEqualsK {
         int count = 0;
 
         HashMap<Integer, Integer> map = new HashMap<>(); //preSum, count
+
         map.put(0, 1);
 
         int preSum = 0;
@@ -31,15 +34,34 @@ public class CountSubArrayWithSumEqualsK {
 
             int removal = preSum - sum;
 
-           count += map.getOrDefault(removal, 0);
+            count += map.getOrDefault(removal, 0);
 
             map.put(preSum, map.getOrDefault(preSum, 0) + 1);
-
         }
 
         return count;
     }
 
+    private static int betterFindAllSubArrayWithGivenSum(int[] arr, int target) {
+
+        int count = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+
+            long sum = 0;
+
+            for (int j = i; j < arr.length; j++) {
+
+                sum += arr[j];
+
+                if (sum == target) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
 
     private static int bruteFindAllSubArraysWithGivenSum(int[] arr, int sum) {
 
@@ -61,6 +83,5 @@ public class CountSubArrayWithSumEqualsK {
         }
 
         return count;
-
     }
 }

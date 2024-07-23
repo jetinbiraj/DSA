@@ -9,7 +9,7 @@ public class OnceAppearance {
 
         int[] arr = {4, 1, 2, 1, 2};
 
-        System.out.println(find(arr));
+        System.out.println(betterFind(arr));
         System.out.println(bruteFind(arr));
         System.out.println(optimalFind(arr));
 
@@ -27,14 +27,12 @@ public class OnceAppearance {
         return xor;
     }
 
-    private static int find(int[] arr) {
+    private static int betterFind(int[] arr) {
 
         Map<Integer, Integer> map = new HashMap<>();
 
         for (int num : arr) {
-
             map.put(num, map.getOrDefault(num, 0) + 1);
-
         }
 
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
@@ -46,7 +44,6 @@ public class OnceAppearance {
         }
 
         return -1;
-
     }
 
     private static int bruteFind(int[] arr) {

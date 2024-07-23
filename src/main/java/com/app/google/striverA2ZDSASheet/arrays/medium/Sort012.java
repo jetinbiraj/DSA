@@ -1,6 +1,7 @@
 package com.app.google.striverA2ZDSASheet.arrays.medium;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Sort012 {
@@ -8,48 +9,54 @@ public class Sort012 {
     public static void main(String[] args) {
 //        int[] arr = {2, 0, 2, 1, 1, 0, 1};
 //        int[] arr = {2, 2, 2, 2, 0, 0, 1, 0};
-//        int[] arr = {1, 0, 2, 2, 0, 0, 2, 2};
+        int[] arr = {1, 1, 1, 0, 0, 1, 0, 2, 2, 0, 0, 2, 2};
 //        int[] arr = {0,2};
 
-//        sort(arr);
-//        optimalSort(arr);
+//        optimalSortArray(arr);
+//        optimalSortArray(arr);
 ////
 //        System.out.println(Arrays.toString(arr));
 
 
-        ArrayList<Integer> list = new ArrayList<>(List.of(2, 2, 2, 2, 0, 0, 1, 0));
-        sortArray(list, list.size());
+//        ArrayList<Integer> list = new ArrayList<>(List.of(2, 2, 2, 2, 0, 0, 1, 0));
+//        optimalSortArrayList(list, list.size());
+//
+//        System.out.println(list);
 
-        System.out.println(list);
+        System.out.println(Arrays.toString(optimalSortWithExtraArray(arr)));
     }
 
-    private static void optimalSort(int[] arr) {
+    private static void optimalSortArray(int[] arr) {
 
-        int left = 0;
-        int mid = 0;
-        int right = arr.length - 1;
+        int zeroPointer = 0;
+        int onePointer = 0;
+        int twoPointer = arr.length - 1;
 
 
-        while (mid <= right) {
+        while (onePointer <= twoPointer) {
 
-            int temp = arr[mid];
-            if (arr[mid] == 0) {
-                arr[mid] = arr[left];
-                arr[left] = temp;
-                left++;
-                mid++;
-            } else if (arr[mid] == 2) {
-                arr[mid] = arr[right];
-                arr[right] = temp;
-                right--;
+            int temp = arr[onePointer];
+
+            if (arr[onePointer] == 0) {
+
+                arr[onePointer] = arr[zeroPointer];
+                arr[zeroPointer] = temp;
+                zeroPointer++;
+                onePointer++;
+
+            } else if (arr[onePointer] == 2) {
+
+                arr[onePointer] = arr[twoPointer];
+                arr[twoPointer] = temp;
+                twoPointer--;
+
             } else {
-                mid++;
+                onePointer++;
             }
-
         }
     }
 
-    public static void sortArray(ArrayList<Integer> arr, int n) {
+    public static void optimalSortArrayList(ArrayList<Integer> arr, int n) {
 
         int left = 0;
         int mid = 0;
@@ -72,41 +79,75 @@ public class Sort012 {
                 arr.set(right, temp);
                 right--;
             }
-
         }
     }
 
-    private static void sort(int[] arr) {
+    private static int[] optimalSortWithExtraArray(int[] arr) {
 
-        int count0 = 0;
-        int count1 = 0;
-        int count2 = 0;
+        int zeroPointer = 0;
+        int onePointer = 0;
+        int twoPointer = arr.length - 1;
+
+        int[] resultArray = new int[arr.length];
+
+        while (onePointer <= twoPointer) {
+
+            for (int num : arr) {
+
+                if (num == 2) {
+                    resultArray[twoPointer--] = num;
+                } else if (num == 1) {
+                    resultArray[onePointer++] = num;
+
+                } else {
+                    if (zeroPointer == onePointer) {
+                        resultArray[zeroPointer++] = num;
+                        onePointer++;
+                    } else {
+                        resultArray[onePointer++] = 1;
+                        resultArray[zeroPointer++] = num;
+                    }
+                }
+            }
+        }
+
+        return resultArray;
+    }
+
+
+    private static void betterSort(int[] arr) {
+
+        int zeroCounter = 0;
+        int oneCounter = 0;
+        int twoCounter = 0;
 
         for (int num : arr) {
 
             if (num == 0) {
-                count0++;
+                zeroCounter++;
             } else if (num == 1) {
-                count1++;
+                oneCounter++;
             } else {
-                count2++;
+                twoCounter++;
             }
         }
 
         int index = 0;
 
-        for (int i = 0; i < count0; i++) {
+        for (int i = 0; i < zeroCounter; i++) {
             arr[index++] = 0;
         }
 
-        for (int i = 0; i < count1; i++) {
+        for (int i = 0; i < oneCounter; i++) {
             arr[index++] = 1;
         }
 
-        for (int i = 0; i < count2; i++) {
+        for (int i = 0; i < twoCounter; i++) {
             arr[index++] = 2;
         }
+    }
 
-
+    private static void bruteForceSort(int[] arr) {
+        Arrays.sort(arr);
     }
 }

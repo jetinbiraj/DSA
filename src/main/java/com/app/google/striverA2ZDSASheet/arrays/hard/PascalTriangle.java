@@ -7,65 +7,62 @@ public class PascalTriangle {
 
     public static void main(String[] args) {
 
-//        System.out.println(getElementRowCol(4, 1));
+        System.out.println(getElementByRowCol(4, 2));
 
-        System.out.println(getPascalTriangleRow(5));
+        System.out.println(getPascalTriangleRow(7));
+        System.out.println(getOptimalPascalTriangleRow(7));
 
-//        System.out.println(generatePascalTriangle(1));
-
+        System.out.println(generatePascalTriangle(1));
     }
 
-    private static int getElementRowCol(int row, int column) {
+    private static int getElementByRowCol(int row, int column) { //5, 4
 
-	/*
+        row = row - 1;
+        column = column - 1;
 
-	row = 5, and column = 3
+        int elementAtRowCol = 1;
 
-	row!/ column! * (row - column)!
-
-	*/
-
-        if (column == 1 || column == row){
-            return 1;
+        for (int i = 0; i < column; i++) {
+            elementAtRowCol = elementAtRowCol * (row - i) / (i + 1);
         }
 
-        return fact(row - 1, 0, column - 1) / fact(column - 1, 0, column - 1);
-
+        return elementAtRowCol;
     }
 
 
-    private static int fact(int num, int currentIteration, int totalIterations) {
-
-        currentIteration += 1;
-
-        if (num == 0) {
-            return 1;
-        } else if (currentIteration >= totalIterations) {
-            return num;
-        }
-
-        return num * fact(num - 1, currentIteration, totalIterations);
-
-    }
-
-    private static List<Integer> getPascalTriangleRow(int rowNumber){
+    private static List<Integer> getPascalTriangleRow(int rowNumber) {
 
         List<Integer> pascalTriangleRow = new ArrayList<>();
 
-        for(int i=1; i<= rowNumber; i++){
+        for (int column = 1; column <= rowNumber; column++) {
 
-            if (i == 1 || i == rowNumber){
+            if (column == 1 || column == rowNumber) {
                 pascalTriangleRow.add(1);
             } else {
 
-                pascalTriangleRow.add(getElementRowCol(rowNumber-1, i-1) + getElementRowCol(rowNumber-1, i));
+                pascalTriangleRow.add(getElementByRowCol(rowNumber, column));
 
             }
-
         }
 
         return pascalTriangleRow;
 
+    }
+
+    private static List<Integer> getOptimalPascalTriangleRow(int rowNumber) {
+
+        List<Integer> pascalTriangleRow = new ArrayList<>(); //
+
+        for (int column = 0; column < rowNumber; column++) {
+
+            if (column == 0 || column + 1 == rowNumber) {
+                pascalTriangleRow.add(1);
+            } else {
+                pascalTriangleRow.add((pascalTriangleRow.getLast() * (rowNumber - column) / column));
+            }
+        }
+
+        return pascalTriangleRow;
     }
 
     private static List<List<Integer>> generatePascalTriangle(int numRows) {
@@ -76,23 +73,20 @@ public class PascalTriangle {
 
             ArrayList<Integer> row = new ArrayList<>();
 
-            for (int j = 0; j < currentRow; j++) {
+            for (int column = 1; column <= currentRow; column++) {
 
-                if (j == 0 || j == currentRow - 1) {
+                if (column == 1 || column == currentRow) {
                     row.add(1);
                 } else {
 
-                    row.add(result.get(currentRow - 2).get(j) + result.get(currentRow - 2).get(j - 1));
+                    row.add(result.get(currentRow - 2).get(column - 1) + result.get(currentRow - 2).get(column - 2));
 
                 }
-
             }
 
             result.add(row);
-
         }
 
         return result;
-
     }
 }

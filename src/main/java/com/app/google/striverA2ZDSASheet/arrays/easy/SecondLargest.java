@@ -1,39 +1,65 @@
 package com.app.google.striverA2ZDSASheet.arrays.easy;
 
+import java.util.Arrays;
+
 public class SecondLargest {
 
     public static void main(String[] args) {
 
-        int[] arr = {13, 3, 46, 24, 52, 20, 9, 9, 9, 50, 50};
+        int[] arr = {13, 3, 46, 24, 52, 20, 9, 9, 9, 50, 51};
 
-        int maxNum = Integer.MIN_VALUE;
-        int secondMaxNum = Integer.MIN_VALUE;
+        System.out.println(bruteForceSecondLargest(arr));
+        System.out.println(betterSecondLargest(arr));
+        System.out.println(optimalSecondLargest(arr));
 
-        for (int i = 1; i < arr.length; i++) {
+    }
 
-//            if (arr[i] > secondMaxNum) {
-//
-//                secondMaxNum = arr[i];
-//
-//                if (secondMaxNum > maxNum) {
-//                    int temp = secondMaxNum;
-//
-//                    secondMaxNum = maxNum;
-//                    maxNum = temp;
-//                }
-//
-//            }
+    private static int optimalSecondLargest(int[] arr) {
+        int largest = Integer.MIN_VALUE;
+        int secondLargest = Integer.MIN_VALUE;
 
-            if (arr[i] > maxNum) {
-                secondMaxNum = maxNum;
-                maxNum = arr[i];
-            } else if (arr[i] > secondMaxNum && arr[i] != maxNum) {
-                secondMaxNum = arr[i];
+        for (int element : arr) {
+            if (element > largest) {
+                secondLargest = largest;
+                largest = element;
+            } else if (element > secondLargest && element != largest) {
+                secondLargest = element;
+            }
+        }
+
+        return secondLargest;
+    }
+
+
+    private static int betterSecondLargest(int[] arr) {
+        int largestElement = Integer.MIN_VALUE;
+        int secondLargestElement = Integer.MIN_VALUE;
+
+        for (int element : arr) {
+            largestElement = Math.max(element, largestElement);
+        }
+
+        for (int element : arr) {
+            if (element > secondLargestElement && element != largestElement) {
+                secondLargestElement = element;
             }
 
         }
 
-        System.out.println(secondMaxNum);
+        return secondLargestElement;
+    }
 
+
+    private static int bruteForceSecondLargest(int[] arr) {
+        Arrays.sort(arr);
+
+        int largestElement = arr[arr.length - 1];
+
+        for (int i = arr.length - 2; i >= 0; i--) {
+            if (arr[i] != largestElement) {
+                return arr[i];
+            }
+        }
+        return -1;
     }
 }

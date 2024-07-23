@@ -12,15 +12,16 @@ public class RemoveOutermostParanthesis {
 
     public static String removeOuterParentheses(String s) {
 
-        int count = 0 ;
-        StringBuilder sb = new StringBuilder();
+        StringBuilder removedOuterParentheses = new StringBuilder();
 
-        for(char c : s.toCharArray()){
+        int count = 0;
 
-            if(c == '(' && ++count > 1){
-                sb.append(c);
-            }else if(c == ')' && --count >= 1){
-                sb.append(c);
+        for (char ch : s.toCharArray()) {
+
+            if (ch == '(' && ++count > 1) {
+                removedOuterParentheses.append(ch);
+            } else if (ch == ')' && --count >= 1) {
+                removedOuterParentheses.append(ch);
             }
 
         }
@@ -31,21 +32,21 @@ public class RemoveOutermostParanthesis {
         //         count +=1;
 
         //         if(count > 1){
-        //             sb.append(s.charAt(i));
+        //             removedOuterParentheses.append(s.charAt(i));
         //         }
         //     } else if (s.charAt(i) == ')') {
 
         //         count -=1;
 
         //         if(count>=1){
-        //             sb.append(s.charAt(i));
+        //             removedOuterParentheses.append(s.charAt(i));
         //         }
 
         //     }
 
         // }
 
-        return sb.toString();
+        return removedOuterParentheses.toString();
 
     }
 }
