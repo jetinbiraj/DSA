@@ -16,18 +16,12 @@ public class SetMatrixZero {
 //        betterSetMatrixZero(arr);
         optimalSetMatrixZero(arr);
 
-//        Collection
-//        System
-
         System.out.println(Arrays.deepToString(arr));
     }
 
     private static void optimalSetMatrixZero(int[][] arr) {
 
         int col0 = 1;
-
-//        int[] row = new int[arr.length]; // arr[...][0]
-//        int[] column = new int[arr[0].length]; // arr[0][...]
 
         for (int i = 0; i < arr.length; i++) {
 
@@ -43,7 +37,6 @@ public class SetMatrixZero {
                         col0 = 0;
                     }
                 }
-
             }
         }
 
@@ -57,7 +50,6 @@ public class SetMatrixZero {
                         arr[i][j] = 0;
                     }
                 }
-
             }
         }
 
@@ -72,7 +64,6 @@ public class SetMatrixZero {
                 arr[i][0] = 0;
             }
         }
-
     }
 
     private static void betterSetMatrixZero(int[][] arr) {
@@ -100,8 +91,6 @@ public class SetMatrixZero {
                 }
             }
         }
-
-
     }
 
 
@@ -134,7 +123,6 @@ public class SetMatrixZero {
                 arr[row][i] = -1;
             }
         }
-
     }
 
     private static void markColumn(int[][] arr, int column) {

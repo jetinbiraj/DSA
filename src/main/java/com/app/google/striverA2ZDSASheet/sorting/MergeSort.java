@@ -14,7 +14,6 @@ public class MergeSort {
         mergeSort(arr, 0, arr.length - 1);
 
         System.out.println(Arrays.toString(arr));
-
     }
 
     private static void mergeSort(int[] arr, int low, int high) {
@@ -28,7 +27,6 @@ public class MergeSort {
 
             merge(arr, low, mid, high);
         }
-
     }
 
     private static void merge(int[] arr, int low, int mid, int high) {
@@ -40,7 +38,7 @@ public class MergeSort {
 
         while (left <= mid && right <= high) {
 
-            if (arr[left] < arr[right]) {
+            if (arr[left] <= arr[right]) {
                 tempList.add(arr[left++]);
             } else {
                 tempList.add(arr[right++]);
@@ -58,7 +56,5 @@ public class MergeSort {
         for (int i = low; i <= high; i++) {
             arr[i] = tempList.get(i - low);
         }
-
-
     }
 }

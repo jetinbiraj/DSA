@@ -8,24 +8,23 @@ public class LargestElement {
 
         int[] arr = {13, 3, 46, 24, 52, 20, 9};
 
-        Arrays.stream(arr).max();
-        System.out.println(maxNum1(arr));
-
-
+        System.out.println(bruteForceLargestElement(arr));
+        System.out.println(optimalLargestElement(arr));
     }
 
-    private static int maxNum1(int[] arr) {
+    private static int optimalLargestElement(int[] arr) {
 
-        int max = arr[0];
+        int largestElement = arr[0];
 
-        for (int i = 1; i < arr.length; i++) {
-
-            if (arr[i] > max) {
-                max = arr[i];
-            }
-
+        for (int element : arr) {
+            largestElement = Math.max(element, largestElement);
         }
 
-        return max;
+        return largestElement;
+    }
+
+    private static int bruteForceLargestElement(int[] arr) {
+        Arrays.sort(arr);
+        return arr[arr.length - 1];
     }
 }

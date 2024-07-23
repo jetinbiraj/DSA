@@ -1,20 +1,17 @@
 package com.app.google.striverA2ZDSASheet.arrays.medium;
 
-
-public class MaxSubArraySum {
+public class PrintMaxSubArraySum {
 
     public static void main(String[] args) {
 
-
         int[] arr = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
 
-//        System.out.println(bruteMaxSum(arr));
-//        System.out.println(optimalMaxSum(arr));
-
-        followUpOptimalMaxSum(arr);
+        bruteMaxSum(arr);
+        System.out.println("---------------------------");
+        optimalMaxSum(arr);
     }
 
-    private static void followUpOptimalMaxSum(int[] arr) {
+    private static void optimalMaxSum(int[] arr) {
 
         int maxSum = Integer.MIN_VALUE;
 
@@ -44,35 +41,34 @@ public class MaxSubArraySum {
         }
     }
 
-    private static int optimalMaxSum(int[] arr) {
+    private static void bruteMaxSum(int[] arr) {
 
         int maxSum = Integer.MIN_VALUE;
 
-        int sum = 0;
-
-        for (int num : arr) {
-            sum = Math.max(num, sum + num);
-            maxSum = Math.max(sum, maxSum);
-        }
-
-        return maxSum;
-    }
-
-    private static long bruteMaxSum(int[] arr) {
-
-        long maxSum = Long.MIN_VALUE;
+        int startIndex = -1;
+        int endIndex = -1;
 
         for (int i = 0; i < arr.length; i++) {
 
             int sum = 0;
 
             for (int j = i; j < arr.length; j++) {
+
                 sum += arr[j];
-                maxSum = Math.max(maxSum, sum);
+
+                if (sum > maxSum) {
+                    maxSum = sum;
+                    startIndex = i;
+                    endIndex = j;
+                }
             }
         }
 
-        return maxSum;
+        System.out.println(startIndex + " .... " + endIndex);
+
+        for (int i = startIndex; i <= endIndex; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
     }
 }
-
