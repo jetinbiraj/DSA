@@ -59,17 +59,13 @@ public class RotateByK {
 
         int[] tempArray = new int[k];
 
-        for (int i = 0; i < tempArray.length; i++) {
-            tempArray[i] = arr[arr.length - k + i];
-        }
+        System.arraycopy(arr, arr.length - k, tempArray, 0, tempArray.length);
 
         for (int i = arr.length - k - 1; i >= 0; i--) {
             arr[i + k] = arr[i];
         }
 
-        for (int i = 0; i < tempArray.length; i++) {
-            arr[i] = tempArray[i];
-        }
+        System.arraycopy(tempArray, 0, arr, 0, tempArray.length);
     }
 
     private static void bruteForceRotateLeft(int[] arr, int k) {
@@ -78,16 +74,12 @@ public class RotateByK {
 
         int[] temp = new int[k];
 
-        for (int i = 0; i < k; i++) {
-            temp[i] = arr[i];
-        }
+        System.arraycopy(arr, 0, temp, 0, k);
 
         for (int i = 0; i < arr.length - k; i++) {
             arr[i] = arr[k + i];
         }
 
-        for (int i = 0; i < k; i++) {
-            arr[arr.length - k + i] = temp[i];
-        }
+        System.arraycopy(temp, 0, arr, arr.length - k, k);
     }
 }
