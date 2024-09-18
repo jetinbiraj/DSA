@@ -29,13 +29,14 @@ public class StringToInteger {
 
         int index = 0, atoiNum = 0, sign = 1;
 
-        char firstChar = s.charAt(index++);
+        char firstChar = s.charAt(index);
 
         if (firstChar == '+' || firstChar == '-') {
             sign = firstChar == '+' ? 1 : -1;
+            index++;
         }
 
-        while (index <= s.length()) {
+        while (index < s.length()) {
 
             char charAtIndex = s.charAt(index++);
 
