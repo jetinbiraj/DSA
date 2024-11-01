@@ -50,7 +50,6 @@ public class PrimeFactorisation {
         while (N != 1) {
             primeFactors.add(primeNumTrackerArr[N]);
             N /= primeNumTrackerArr[N];
-
         }
 
         return primeFactors;
