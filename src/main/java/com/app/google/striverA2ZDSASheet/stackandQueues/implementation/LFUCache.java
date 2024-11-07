@@ -13,7 +13,7 @@ public class LFUCache {
     public LFUCache(int capacity) {
         this.leastFrequency = 0; // 1
         this.capacity = capacity; // 2
-        this.map = new LinkedHashMap<>(); // {[1, {4, 4}], [2, {3, 3}] }
+        this.map = new HashMap<>(); // {[1, {4, 4}], [2, {3, 3}] }
         this.hashMap = new HashMap<>(); // {3, 2}, {4, 1}
     }
 
@@ -228,6 +228,5 @@ public class LFUCache {
         cache.put(9, 26);
         cache.put(13, 28);
         cache.put(11, 26);
-
     }
 }
