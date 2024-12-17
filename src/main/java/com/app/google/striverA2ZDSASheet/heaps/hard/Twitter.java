@@ -42,30 +42,27 @@ public class Twitter {
 
     public List<Integer> getNewsFeed(int userId) {
 
-        List<Integer> list = new ArrayList<>();
+        List<Integer> lastTenTweets = new ArrayList<>();
+        if (!userMap.containsKey(userId)) {
+            return lastTenTweets;
+        }
 
         int index = tweetList.size() - 1;
 
-        while (list.size() < 10 && index >= 0) {
+        while (lastTenTweets.size() < 10 && index >= 0) {
 
             Pair pair = tweetList.get(index--);
             if (pair.getKey() == userId || userMap.get(userId).contains(pair.getKey())) {
-                list.add(pair.getValue());
+                lastTenTweets.add(pair.getValue());
             }
         }
 
-        return list;
+        return lastTenTweets;
     }
 
     public void follow(int followerId, int followeeId) {
 
-        if (userMap.containsKey(followerId)) {
-            userMap.get(followerId).add(followeeId);
-        } else {
-            Set<Integer> set = new HashSet<>();
-            set.add(followeeId);
-            userMap.put(followerId, set);
-        }
+        userMap.computeIfAbsent(followerId, k -> new HashSet<>()).add(followeeId);
     }
 
     public void unfollow(int followerId, int followeeId) {
