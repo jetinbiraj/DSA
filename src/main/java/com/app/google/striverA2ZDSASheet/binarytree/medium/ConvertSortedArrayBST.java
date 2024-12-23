@@ -5,7 +5,7 @@ import com.app.google.striverA2ZDSASheet.binarytree.TreeNode;
 public class ConvertSortedArrayBST {
 
     public static void main(String[] args) {
-        int[] nums = {-10, -3, 0, 5, 9};
+        int[] nums = {11, -10, -3, 0, 5, 9};
 
         System.out.println(sortedArrayToBST(nums).val);
     }
