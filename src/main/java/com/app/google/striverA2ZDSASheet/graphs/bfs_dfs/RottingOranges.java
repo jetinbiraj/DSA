@@ -55,8 +55,8 @@ public class RottingOranges {
 
                 for (int[] dir : delta) {
 
-                    int x = pair.getKey() + dir[0];
-                    int y = pair.getValue() + dir[1];
+                    int x = pair.key() + dir[0];
+                    int y = pair.value() + dir[1];
 
                     if (x < 0 || y < 0 || x >= rows || y >= cols || grid[x][y] == 0 || grid[x][y] == 2) {
                         continue;

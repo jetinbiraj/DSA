@@ -29,11 +29,11 @@ public class WordLadder {
 
             var entry = queue.pollFirst();
 
-            if (entry.getKey().equals(endWord)) {
-                return entry.getValue();
+            if (entry.key().equals(endWord)) {
+                return entry.value();
             }
 
-            checkAndAddNewEntries(queue, wordSet, entry.getKey(), entry.getValue() + 1);
+            checkAndAddNewEntries(queue, wordSet, entry.key(), entry.value() + 1);
         }
 
         return 0;

@@ -49,7 +49,7 @@ public class CheapestFlightsWithKStops {
             visited.put(entry[2], entry[0]);
 
             for (var city : adj.get(entry[2])) {
-                pq.add(new int[]{entry[0] + city.getValue(), entry[1] + 1, city.getKey()});
+                pq.add(new int[]{entry[0] + city.value(), entry[1] + 1, city.key()});
             }
         }
 
@@ -84,7 +84,7 @@ public class CheapestFlightsWithKStops {
             }
 
             for (Pair<Integer, Integer> city : adj.get(entry[2])) {
-                pq.add(new int[]{entry[0] + city.getValue(), entry[1] + 1, city.getKey()});
+                pq.add(new int[]{entry[0] + city.value(), entry[1] + 1, city.key()});
             }
         }
 
