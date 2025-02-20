@@ -12,7 +12,7 @@ public class PascalTriangle {
         System.out.println(getPascalTriangleRow(7));
         System.out.println(getOptimalPascalTriangleRow(7));
 
-        System.out.println(generatePascalTriangle(1));
+        System.out.println(generatePascalTriangle(5));
     }
 
     private static int getElementByRowCol(int row, int column) { //5, 4

@@ -34,14 +34,14 @@ public class ShortestPathBinaryMatrix {
 
             for (int[] dir : delta) {
 
-                int x = entry.getKey() + dir[0];
-                int y = entry.getValue() + dir[1];
+                int x = entry.key() + dir[0];
+                int y = entry.value() + dir[1];
 
                 if (x < 0 || x >= rows || y < 0 || y >= cols || grid[x][y] != 0) {
                     continue;
                 }
 
-                grid[x][y] = grid[entry.getKey()][entry.getValue()] + 1;
+                grid[x][y] = grid[entry.key()][entry.value()] + 1;
 
                 queue.add(new Pair<>(x, y));
             }
@@ -69,14 +69,14 @@ public class ShortestPathBinaryMatrix {
 
             for (int[] dir : delta) {
 
-                int x = entry.getValue()[0] + dir[0];
-                int y = entry.getValue()[1] + dir[1];
+                int x = entry.value()[0] + dir[0];
+                int y = entry.value()[1] + dir[1];
 
                 if (x < 0 || x >= rows || y < 0 || y >= cols || grid[x][y] == 1 || grid[x][y] == -1) {
                     continue;
                 }
 
-                int newDist = entry.getKey() + 1;
+                int newDist = entry.key() + 1;
                 if (x == rows - 1 && y == cols - 1) {
                     return newDist;
                 }

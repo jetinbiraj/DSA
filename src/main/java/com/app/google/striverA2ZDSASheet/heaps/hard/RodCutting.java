@@ -1,28 +1,11 @@
 package com.app.google.striverA2ZDSASheet.heaps.hard;
 
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.PriorityQueue;
-import java.util.TreeMap;
 
 public class RodCutting {
 
-    private static class Pair {
-        private final float key;
-        private final int value;
-
-        public Pair(float key, int value) {
-            this.key = key;
-            this.value = value;
-        }
-
-        public float getKey() {
-            return key;
-        }
-
-        public int getValue() {
-            return value;
-        }
+    private record Pair(float key, int value) {
     }
 
     public static void main(String[] args) {
@@ -36,11 +19,10 @@ public class RodCutting {
 
     private static int cutRod(int[] price, int n) {
         int[] dp = new int[n + 1];
-        dp[0] = 0; // Base case: no value for length 0
 
         for (int i = 1; i <= n; i++) {
             int maxValue = Integer.MIN_VALUE;
-            // Try all cuts of length `j`
+
             for (int j = 1; j <= i; j++) {
                 maxValue = Math.max(maxValue, price[j - 1] + dp[i - j]);
             }
@@ -52,7 +34,9 @@ public class RodCutting {
 
     private static int cutRodUsingPriorityQueue(int[] prices, int n) {
 
-        PriorityQueue<Pair> pq = new PriorityQueue<>((a, b) -> Float.compare(b.getKey(), a.getKey()));
+        //TODO: This solution doesn't really work
+
+        PriorityQueue<Pair> pq = new PriorityQueue<>((a, b) -> Float.compare(b.key(), a.key()));
 
         int index = 1;
         for (int price : prices) {
@@ -68,9 +52,9 @@ public class RodCutting {
             while (iterator.hasNext()) {
                 Pair pair = iterator.next();
 
-                if (n >= pair.getValue()) {
-                    maxPrice += (int) (pair.getKey() * pair.getValue());
-                    n -= pair.getValue();
+                if (n >= pair.value()) {
+                    maxPrice += (int) (pair.key() * pair.value());
+                    n -= pair.value();
                     break;
                 }
             }
