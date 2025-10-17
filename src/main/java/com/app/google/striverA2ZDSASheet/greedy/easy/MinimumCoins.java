@@ -5,13 +5,15 @@ import java.util.Arrays;
 public class MinimumCoins {
 
     public static void main(String[] args) {
-        int[] coins = {1,2,5,10,20,50,100,500,1000};
-        int sum = 87;
+        int[] coins = {8, 5};
+//        int[] coins = {1, 2, 5, 10, 20, 50, 100, 500, 1000};
+//        int sum = 87;
+        int sum = 25;
 
         System.out.println(minCoinsRecur(sum, coins));
     }
 
-    private static int minCoinsRecur(int sum, int[] coins) {
+    private static int minCoinsRecur(int sum, int[] coins) { // 25, [8, 5]
 
         int coinCount = 0;
 

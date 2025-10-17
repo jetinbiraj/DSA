@@ -7,14 +7,7 @@ import java.util.List;
 
 public class JobSequencing {
 
-    static class Job {
-        int id, profit, deadline;
-
-        Job(int id, int deadline, int profit) {
-            this.id = id;
-            this.deadline = deadline;
-            this.profit = profit;
-        }
+    record Job(int id, int deadline, int profit) {
     }
 
     public static void main(String[] args) {
@@ -34,8 +27,7 @@ public class JobSequencing {
         Arrays.sort(jobs, Comparator.comparingInt(a -> a.profit));
 
         int[] hash = new int[n];
-        int jobCount = 0;
-        int profit = 0;
+        int jobCount = 0, profit = 0;
 
         for (int i = n - 1; i >= 0; i--) {
 

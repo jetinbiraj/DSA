@@ -14,8 +14,8 @@ public class ReverseKGroup {
 
 //        Node newNode = bruteForceReverseKGroup(head, k);
 //        Node newNode = betterReverseKGroup(head, k);
-//        Node newNode = recursiveReverseKGroup(head, k);
-        Node newNode = iterativeReverseKGroup(head, k);
+        Node newNode = recursiveReverseKGroup(head, k);
+//        Node newNode = iterativeReverseKGroup(head, k);
 
         LinkedList.printLinkedList(newNode);
     }

@@ -28,7 +28,7 @@ public class MaxSumCombinations {
 
     private static ArrayList<Integer> optimalMaxSumCombinations(ArrayList<Integer> A, ArrayList<Integer> B, int C) {
 
-        ArrayList<Integer> op = new ArrayList<>();
+        ArrayList<Integer> op = new ArrayList<>(C);
         int size = A.size();
 
         HashSet<Integer> set = new HashSet<>();

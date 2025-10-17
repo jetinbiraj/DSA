@@ -25,9 +25,7 @@ public class CountNiceSubarrays {
             return 0;
         }
 
-        int n = nums.length;
-        int left = 0;
-        int count = 0;
+        int n = nums.length, left = 0, count = 0;
 
         for (int j = 0; j < n; j++) {
 

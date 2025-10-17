@@ -22,15 +22,13 @@ public class SortStack {
         s.forEach(e -> System.out.print(e + " "));
     }
 
-    private static Stack<Integer> sort(Stack<Integer> s) {  //11, 101, 2, 32, 3, 41, 99 || 2 11 3 32 41 99 101
+    private static void sort(Stack<Integer> s) {  //11, 101, 2, 32, 3, 41, 99 || 2 11 3 32 41 99 101
 
         if (!s.isEmpty()) {
             int element = s.pop();
             sort(s);
             sortedInsert(s, element);
         }
-
-        return s;
     }
 
     private static void sortedInsert(Stack<Integer> s, int element) {
@@ -49,7 +47,6 @@ public class SortStack {
 
     private static Stack<Integer> naiveSort(Stack<Integer> s) {
         Collections.sort(s);
-
         return s;
     }
 }

@@ -1,8 +1,5 @@
 package com.app.google.striverA2ZDSASheet.basics.math;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class HCF {
 
     public static void main(String[] args) {

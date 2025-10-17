@@ -7,15 +7,15 @@ public class NextPermutation {
 
     public static void main(String[] args) {
 
-        int[] arr = {2, 1, 5, 4, 3, 0, 0};
+        int[] arr = {1, 3, 4, 2};
 
         optimalNextGreaterPermutation(arr);
 
         System.out.println(Arrays.toString(arr));
 
-        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(2, 1, 5, 4, 3, 0, 0));
-
-        System.out.println(nextPermutation(list));
+//        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(2, 1, 5, 4, 3, 0, 0));
+//
+//        System.out.println(nextPermutation(list));
     }
 
     private static void optimalNextGreaterPermutation(int[] arr) {

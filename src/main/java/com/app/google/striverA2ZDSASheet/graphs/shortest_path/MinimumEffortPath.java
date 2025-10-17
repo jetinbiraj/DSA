@@ -19,7 +19,7 @@ public class MinimumEffortPath {
 
         int minEffort = 0;
 
-        PriorityQueue<Pair<Integer, int[]>> pq = new PriorityQueue<>(Comparator.comparingInt(p -> p.getKey()));
+        PriorityQueue<Pair<Integer, int[]>> pq = new PriorityQueue<>(Comparator.comparingInt(p -> p.key()));
         pq.add(new Pair<>(0, new int[]{0, 0}));
 
         int[][] delta = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
@@ -33,10 +33,10 @@ public class MinimumEffortPath {
         while (!pq.isEmpty()) {
 
             var entry = pq.poll();
-            minEffort = Math.max(minEffort, entry.getKey());
+            minEffort = Math.max(minEffort, entry.key());
 
-            int currentX = entry.getValue()[0];
-            int currentY = entry.getValue()[1];
+            int currentX = entry.value()[0];
+            int currentY = entry.value()[1];
 
             if (currentX == rows - 1 && currentY == cols - 1) {
                 break;

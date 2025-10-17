@@ -21,37 +21,32 @@ public class QuickSort {
 
             quickSort(arr, lowerIndex, pivotPartitionIndex - 1);
             quickSort(arr, pivotPartitionIndex + 1, higherIndex);
-
         }
-
     }
 
     private static int partitionPivot(int[] arr, int lowerIndex, int higherIndex) {
 
-        int leftPointer = lowerIndex;
-        int rightPointer = higherIndex;
+        int i = lowerIndex, j = higherIndex;
 
         int pivotElement = arr[lowerIndex];
 
-        while (leftPointer < rightPointer) {
+        while (i < j) {
 
-            while (arr[leftPointer] <= pivotElement && leftPointer <= higherIndex - 1) {
-                leftPointer++;
+            while (arr[i] <= pivotElement && i < higherIndex) {
+                i++;
             }
 
-            while (arr[rightPointer] > pivotElement && rightPointer >= lowerIndex + 1) {
-                rightPointer--;
+            while (arr[j] > pivotElement && j > lowerIndex) {
+                j--;
             }
 
-            if (leftPointer < rightPointer) {
-                swap(arr, leftPointer, rightPointer);
+            if (i < j) {
+                swap(arr, i, j);
             }
-
         }
 
-        swap(arr, lowerIndex, rightPointer);
-
-        return rightPointer;
+        swap(arr, lowerIndex, j);
+        return j;
     }
 
     private static void swap(int[] arr, int firstIndex, int secondIndex) {

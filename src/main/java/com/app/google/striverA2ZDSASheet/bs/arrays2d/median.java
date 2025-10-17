@@ -21,8 +21,7 @@ public class median {
     private static int optimalMedian(int[][] matrix) {
 
         int low = 1, high = 2000;
-        int r = matrix.length;
-        int c = matrix[0].length;
+        int rows = matrix.length, cols = matrix[0].length;
 
         while (low <= high) {
 
@@ -31,7 +30,7 @@ public class median {
 
             for (int[] row : matrix) {
 
-                int l = 0, h = c - 1;
+                int l = 0, h = cols - 1;
 
                 while (l <= h) {
                     int m = (h + l) >> 1;
@@ -42,8 +41,11 @@ public class median {
                 ans += l;
             }
 
-            if (ans <= (r * c) / 2) low = mid + 1;
-            else high = mid - 1;
+            if (ans <= (rows * cols) / 2) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
         }
 
         return low;
@@ -56,10 +58,10 @@ public class median {
 
         List<Integer> list = new ArrayList<>();
 
-        for (int i = 0; i < m; i++) {
+        for (int[] row : mat) {
 
             for (int j = 0; j < n; j++) {
-                list.add(mat[i][j]);
+                list.add(row[j]);
             }
         }
 

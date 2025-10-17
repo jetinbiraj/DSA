@@ -23,6 +23,10 @@ public class CopyRandomList {
 
     private static Node optimalCopyRandomList(Node head) {
 
+        if(head == null) {
+            return null;
+        }
+
         Node current = head;
 
         while (current != null) {

@@ -87,7 +87,6 @@ public class FractionalKnapsack {
             int value = val.get(pair.index);
 
             if (weight < capacity) {
-
                 capacity -= weight;
                 collection += value;
 
@@ -95,7 +94,6 @@ public class FractionalKnapsack {
 
                 collection += (double) value / weight * capacity;
                 capacity = 0;
-
             }
         }
 

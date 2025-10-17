@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<media xmlns="urn:oma:xml:dl:dd:2.0" DDVersion="2.0">
+    <product>
+        <meta>
+            <text display="deu-DE.title" id="author">Kartenupdate Europa</text>
+            <text display="deu-DE.teaser" id="author">2022(V13.0) Online Kartenupdate
+                Israel</text>
+            <text display="deu-DE.notuner" id="author"> </text>
+            <text display="eng-GB.title" id="author">Map update, Europe</text>
+            <text display="eng-GB.teaser" id="author">2022(V13.0) Online map update
+                Israel</text>
+            <text display="eng-GB.notuner" id="author"> </text>
+            <text display="eng-US.title" id="author">Map update, Europe</text>
+            <text display="eng-US.teaser" id="author">2022(V13.0) Online map update
+                Israel</text>
+            <text display="eng-US.notuner" id="author"> </text>
+            <text display="nld-NL.title" id="author">Kaarten voor Europa</text>
+            <text display="nld-NL.teaser" id="author">2022(V13.0) Online kaartupdate
+                Israël</text>
+            <text display="nld-NL.notuner" id="author"> </text>
+            <license lictype="0x543583458348528485AFAED3492394234234" licmimetype="text"/>
+        </meta>
+        <mediaObject>
+            <meta>
+                <license lictype="QWERTZ" licmimetype="text"/>
+                <environment envtype="urn:daimler:software:type:map"/>
+            </meta>
+            <size>253271335</size>
+            <type>application/octet-stream</type>
+            <objectID>4384</objectID>
+            <objectURI>
+                <server>file:/3f_00000002_00001120_30_00000000_000000FA.updatedata</server>
+            </objectURI>
+        </mediaObject>
+    </product>
+</media>

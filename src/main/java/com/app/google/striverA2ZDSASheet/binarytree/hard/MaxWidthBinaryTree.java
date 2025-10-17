@@ -25,13 +25,13 @@ public class MaxWidthBinaryTree {
 
         while (!queue.isEmpty()) {
 
-            int size = queue.size(), start = 0, end = 0, min = queue.peekFirst().getValue();
+            int size = queue.size(), start = 0, end = 0, min = queue.peekFirst().value();
 
             for (int i = 0; i < size; i++) {
 
                 Pair<TreeNode, Integer> pair = queue.pollFirst();
-                TreeNode key = pair.getKey();
-                int val = pair.getValue() - min;
+                TreeNode key = pair.key();
+                int val = pair.value() - min;
 
                 if (i == 0) {
                     start = val;
